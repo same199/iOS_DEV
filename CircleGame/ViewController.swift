@@ -37,7 +37,14 @@ class ViewController: UIViewController {
         return rightButton
     }()
     
-    func configurateUI(){
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        circleSpawn()
+    }
+    
+    func configureUI(){
         view.backgroundColor = UIColor.white
         
         view.addSubview(forwButton)
@@ -72,23 +79,23 @@ class ViewController: UIViewController {
         let right = UIAction {_ in self.goRight()}
         riButton.addAction(right, for: .touchUpInside)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configurateUI()
-        circleSpawn()
-    }
+    
     func goForvard(){
         moveCircle(direction: Directions.forward)
     }
+    
     func goBackward(){
         moveCircle(direction: Directions.backward)
     }
+    
     func goLeft(){
         moveCircle(direction: Directions.left)
     }
+    
     func goRight(){
         moveCircle(direction: Directions.right)
     }
+    
     func circleSpawn(){
         let borderX = view.frame.width - circleSize
         let borderY = view.frame.height - circleSize
